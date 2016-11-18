@@ -3,6 +3,8 @@ package com.example.guest.herbicorpsapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ import butterknife.ButterKnife;
 
 public class RecipeSearch extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
+    @Bind(R.id.recipeListView) ListView mRecipeListView;
 
     public ArrayList<Recipe> recipes = new ArrayList<Recipe>();
     public ArrayList<Recipe> savedRecipes = new ArrayList<Recipe>();
@@ -30,6 +33,10 @@ public class RecipeSearch extends AppCompatActivity {
         recipes.add(recipe);
         recipes.add(recipeTwo);
         recipes.add(recipeThree);
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_gallery_item, recipes);
+        mRecipeListView.setAdapter(adapter);
+
 
         Intent intent = getIntent();
         String ingredientsInput = intent.getStringExtra("ingredients").toString();
