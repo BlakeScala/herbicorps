@@ -32,15 +32,20 @@ public class RecipeMain extends AppCompatActivity implements View.OnClickListene
         String recipe = intent.getStringExtra("selectedRecipe");
         recipeToAdd = recipe;
         mRecipeTitle.setText(recipe);
+
+        mXButton.setOnClickListener(this);
+        mCheckButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if(v == mXButton) {
-            Intent intent = new Intent(RecipeMain.this, RecipeSearch.class);
+            Toast.makeText(RecipeMain.this, "Delete + Navigate back using intent with request code", Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent(RecipeMain.this, RecipeSearch.class);
+//            startActivityForResult(intent, 1);
         } else if(v == mCheckButton) {
             checkedRecipes.add(recipeToAdd);
-            Toast.makeText(RecipeMain.this, "Added to Favorites", Toast.LENGTH_LONG).show();
+            Toast.makeText(RecipeMain.this, "Added to Favorites", Toast.LENGTH_SHORT).show();
         }
     }
 }
