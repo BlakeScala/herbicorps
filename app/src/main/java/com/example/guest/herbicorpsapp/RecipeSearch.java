@@ -11,6 +11,11 @@ import butterknife.ButterKnife;
 
 public class RecipeSearch extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
+    public Recipe[] recipes = {
+            Recipe recipe = new Recipe("Mac and Cashew Cheese", "Sample Instructions", "http://veganyumminess.com/wp-content/uploads/2014/04/Vegan-Mac-and-Cheese-2.jpg"),
+            Recipe recipeTwo = new Recipe("Macaroni and Cashew Cheese", "Here are instructions", "http://veganyumminess.com/wp-content/uploads/2014/04/Vegan-Mac-and-Cheese-2.jpg")
+    }
+};
 
 
     @Override

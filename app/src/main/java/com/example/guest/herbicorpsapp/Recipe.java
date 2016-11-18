@@ -8,10 +8,10 @@ public class Recipe {
     private String imageURL;
     private String instructions;
 
-    public Recipe(String recipeTitle, String imageURL, String instructions) {
+    public Recipe(String recipeTitle, String instructions, String imageURL) {
         this.recipeTitle = recipeTitle;
-        this.imageURL = imageURL;
         this.instructions = instructions;
+        this.imageURL = imageURL;
     }
 
     public String getRecipeTitle() {
