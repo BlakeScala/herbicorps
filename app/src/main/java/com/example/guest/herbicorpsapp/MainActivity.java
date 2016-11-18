@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface pacificoFont = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
         mMainTitle.setTypeface(pacificoFont);
         mSubTitle.setTypeface(pacificoFont);
+
+        mFindButton.setOnClickListener(this);
     }
 
     @Override
