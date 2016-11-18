@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/recipeTitle"
+        android:textAlignment="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
@@ -34,28 +35,24 @@
         android:layout_height="70sp"
         android:text="✓"
         android:id="@+id/checkButton"
-        android:layout_marginTop="68dp"
-        android:layout_below="@+id/recipeInstructions"
-        android:layout_toLeftOf="@+id/xButton"
-        android:layout_toStartOf="@+id/xButton"
+        android:layout_marginTop="55dp"
         android:textColor="@color/colorWhite"
         android:textSize="40sp"
         android:background="@color/colorMainTitle"
-        android:layout_marginRight="32dp"
-        android:layout_marginEnd="32dp" />
+        android:layout_below="@+id/recipeInstructions"
+        android:layout_toLeftOf="@+id/recipeInstructions"
+        android:layout_toStartOf="@+id/recipeInstructions" />
 
     <Button
         android:layout_width="70sp"
         android:layout_height="70sp"
         android:text="x"
         android:id="@+id/xButton"
-        android:layout_alignTop="@+id/checkButton"
-        android:layout_toRightOf="@+id/recipeTitle"
-        android:layout_toEndOf="@+id/recipeTitle"
         android:textColor="@color/colorWhite"
         android:textSize="40sp"
         android:background="@color/colorMainTitle"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp" />
+        android:layout_alignTop="@+id/checkButton"
+        android:layout_toRightOf="@+id/recipeInstructions"
+        android:layout_toEndOf="@+id/recipeInstructions" />
 
 </RelativeLayout>
