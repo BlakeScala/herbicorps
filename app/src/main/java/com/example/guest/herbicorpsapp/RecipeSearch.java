@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 public class RecipeSearch extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
