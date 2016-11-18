@@ -40,7 +40,9 @@ public class RecipeSearch extends AppCompatActivity {
         mRecipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String clickedItem = parent.getItemAtPosition(position).toString();
                 Intent intent = new Intent(RecipeSearch.this, RecipeMain.class);
+                intent.putExtra("selectedRecipe", clickedItem);
                 startActivity(intent);
             }
         });
