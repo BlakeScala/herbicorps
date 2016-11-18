@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 public class RecipeMain extends AppCompatActivity {
     @Bind(R.id.recipeTitle) TextView mRecipeTitle;
     @Bind(R.id.recipeInstructions) TextView mRecipeInstructions;
+    @Bind(R.id.)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
