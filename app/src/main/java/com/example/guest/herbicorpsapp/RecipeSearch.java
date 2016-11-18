@@ -3,6 +3,8 @@ package com.example.guest.herbicorpsapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,25 +19,31 @@ public class RecipeSearch extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
     @Bind(R.id.recipeListView) ListView mRecipeListView;
 
-    public ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-    public ArrayList<Recipe> savedRecipes = new ArrayList<Recipe>();
+//    public ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+//    public ArrayList<Recipe> savedRecipes = new ArrayList<Recipe>();
 
-    Recipe recipe = new Recipe("Mac and Cashew Cheese", "Sample Instructions", "http://veganyumminess.com/wp-content/uploads/2014/04/Vegan-Mac-and-Cheese-2.jpg");
-    Recipe recipeTwo = new Recipe("Macaroni and Cashew Cheese", "Here are instructions", "http://veganyumminess.com/wp-content/uploads/2014/04/Vegan-Mac-and-Cheese-2.jpg");
-    Recipe recipeThree = new Recipe("Cashew Mac & Cheese", "How to make it", "http://veganyumminess.com/wp-content/uploads/2014/04/Vegan-Mac-and-Cheese-2.jpg");
-}
+    public ArrayList<String> recipes = new ArrayList<String>();
+    public ArrayList<String> savedRecipes = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_search);
         ButterKnife.bind(this);
-        recipes.add(recipe);
-        recipes.add(recipeTwo);
-        recipes.add(recipeThree);
+        recipes.add("Mac and Cashew Cheese");
+        recipes.add("Macaroni and Cashew Cheese");
+        recipes.add("Cashew Cheese Macaroni");
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_gallery_item, recipes);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipes);
         mRecipeListView.setAdapter(adapter);
+
+        mRecipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(RecipeSearch.this, RecipeMain.class);
+                startActivity(intent);
+            }
+        });
 
 
         Intent intent = getIntent();

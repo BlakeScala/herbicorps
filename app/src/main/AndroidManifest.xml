@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeSearch"></activity>
+        <activity android:name=".RecipeSearch" />
+        <activity android:name=".RecipeMain"></activity>
     </application>
 
 </manifest>
