@@ -14,11 +14,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Herbicorps"
-        android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="42dp"
+        android:textSize="62dp"
         android:textStyle="bold"
         android:textColor="@color/colorMainTitle"
         android:id="@+id/mainTitle" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:id="@+id/editText"
+        android:layout_marginBottom="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/wrap"
+        android:layout_below="@+id/mainTitle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="47dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Vegan Meal Helper"
+        android:textSize="20sp"
+        android:id="@+id/subTitle"
+        android:layout_above="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.mainTitle) TextView mMainTitle;
+    @Bind(R.id.subTitle) TextView mSubTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         Typeface pacificoFont = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
         mMainTitle.setTypeface(pacificoFont);
+        mSubTitle.setTypeface(pacificoFont);
+
 
     }
 }
