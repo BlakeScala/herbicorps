@@ -3,6 +3,7 @@ package com.example.guest.herbicorpsapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,10 +11,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class RecipeSearch extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
@@ -49,9 +54,32 @@ public class RecipeSearch extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String ingredientsInput = intent.getStringExtra("ingredients").toString();
-        mSearchText.setText("Vegan meals including " + ingredientsInput);
+        String foodSearchInput = intent.getStringExtra("ingredients").toString();
+        mSearchText.setText("Vegan meals including " + foodSearchInput);
         Toast.makeText(RecipeSearch.this, "API Call", Toast.LENGTH_LONG).show();
 
+        getRecipes(foodSearchInput);
+
+    }
+
+    private void getRecipes(String foodInput) {
+        final YummlyService yummlyService = new YummlyService();
+        yummlyService.findRecipes(foodInput, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v("log", jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
