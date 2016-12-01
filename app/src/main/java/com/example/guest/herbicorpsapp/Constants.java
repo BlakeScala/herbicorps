@@ -5,9 +5,10 @@ package com.example.guest.herbicorpsapp;
  */
 public class Constants {
     public static final String APP_KEY = BuildConfig.APP_KEY;
+    public static final String APP_KEY_QUERY_PARAMETER = "_app_key";
     public static final String APP_ID = BuildConfig.APP_ID;
-    public static final String APP_BASE_URL = "http://api.yummly.com/v1/api/recipes?_";
+    public static final String APP_ID_QUERY_PARAMETER = "_app_id";
+    public static final String APP_BASE_URL = "http://api.yummly.com/v1/api/recipes?";
     public static final String APP_FOOD_QUERY_PARAMETER = "q";
 }
 
-//http://api.yummly.com/v1/api/recipes?_app_id=98609b53&_app_key=765f89e001c44fd2193e307b33c12402&q=onion+soup &allowedDiet[]=386^Vegan
