@@ -2,11 +2,19 @@ package com.example.guest.herbicorpsapp;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 
@@ -38,6 +46,44 @@ public class YummlyService {
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
+
+    public ArrayList<Recipe> processResults(Response response) {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+
+        try {
+            String jsonData = response.body().string();
+            if (response.isSuccessful()) {
+                JSONObject yummlyJSON = new JSONObject(jsonData);
+                JSONArray matchesJSON = yummlyJSON.getJSONArray("matches");
+                for(int i = 0; i < matchesJSON.length(); i++) {
+                    JSONObject recipeJSON = matchesJSON.getJSONObject(i);
+                    String recipeName = recipeJSON.getString("recipeName");
+                    String sourceName = recipeJSON.getString("sourceName");
+                    String imageURL = recipeJSON.getJSONObject("imageUrlsBySize").getString("90");
+
+                    ArrayList<String> ingredients = new ArrayList<>();
+                    JSONArray ingredientsJSON = recipeJSON.getJSONArray("ingredients");
+                    for(int j = 0; j < ingredientsJSON.length(); j++) {
+                        ingredients.add(ingredientsJSON.get(j).toString());
+                    }
+
+                    int estimatedTime = recipeJSON.getInt("totalTimeInSeconds");
+                    int rating = recipeJSON.getInt("rating");
+                    String id = recipeJSON.getString("id");
+
+                    Recipe recipe = new Recipe(recipeName, sourceName, imageURL, ingredients, estimatedTime, rating, id);
+                    recipes.add(recipe);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return recipes;
+    }
+
+
 }
 
 
