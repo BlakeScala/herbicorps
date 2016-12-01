@@ -1,5 +1,7 @@
 package com.example.guest.herbicorpsapp;
 
+import android.util.Log;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -14,6 +16,8 @@ import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 public class YummlyService {
 
     public static void findRecipes(String foodEntry, Callback callback) {
+        Log.v("log", "MADE IT!");
+
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
@@ -23,11 +27,12 @@ public class YummlyService {
         urlBuilder.addQueryParameter(Constants.APP_FOOD_QUERY_PARAMETER, foodEntry);
 
         String url = urlBuilder.build().toString();
-        String urlEnding = " &allowedDiet[]=386^Vegan";
-        url += urlEnding;
+        String newUrl = url + "&allowedDiet[]=386^Vegan";
+
+        Log.v("log", "URL " + newUrl);
 
         Request request = new Request.Builder()
-                .url(url)
+                .url(newUrl)
                 .build();
 
         Call call = client.newCall(request);

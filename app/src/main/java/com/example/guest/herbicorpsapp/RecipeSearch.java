@@ -54,9 +54,8 @@ public class RecipeSearch extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String foodSearchInput = intent.getStringExtra("ingredients").toString();
+        String foodSearchInput = intent.getStringExtra("ingredients");
         mSearchText.setText("Vegan meals including " + foodSearchInput);
-        Toast.makeText(RecipeSearch.this, "API Call", Toast.LENGTH_LONG).show();
 
         getRecipes(foodSearchInput);
 
