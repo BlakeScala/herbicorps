@@ -24,11 +24,6 @@ public class RecipeSearch extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
     @Bind(R.id.recipeListView) ListView mRecipeListView;
 
-//    public ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-//    public ArrayList<Recipe> savedRecipes = new ArrayList<Recipe>();
-
-    public ArrayList<String> recipes = new ArrayList<String>();
-    public ArrayList<String> savedRecipes = new ArrayList<String>();
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
     @Override
@@ -36,23 +31,6 @@ public class RecipeSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_search);
         ButterKnife.bind(this);
-        recipes.add("Mac and Cashew Cheese");
-        recipes.add("Macaroni and Cashew Cheese");
-        recipes.add("Cashew Cheese Macaroni");
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipes);
-        mRecipeListView.setAdapter(adapter);
-
-        mRecipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedItem = parent.getItemAtPosition(position).toString();
-                Intent intent = new Intent(RecipeSearch.this, RecipeMain.class);
-                intent.putExtra("selectedRecipe", clickedItem);
-                startActivity(intent);
-            }
-        });
-
 
         Intent intent = getIntent();
         String foodSearchInput = intent.getStringExtra("ingredients");
@@ -72,14 +50,26 @@ public class RecipeSearch extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v("log", jsonData);
-                    mRecipes = yummlyService.processResults(response);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(Call call, Response response) {
+                mRecipes = yummlyService.processResults(response);
+
+                RecipeSearch.this.runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        String[] recipeNames = new String[mRecipes.size()];
+                        for (int i = 0; i < recipeNames.length; i ++) {
+                            recipeNames[i] = mRecipes.get(i).getRecipeName();
+                        }
+
+                        ArrayAdapter adapter = new ArrayAdapter(RecipeSearch.this, android.R.layout.simple_list_item_1, recipeNames);
+                        mRecipeListView.setAdapter(adapter);
+
+                        for (String recipeName : recipeNames) {
+                            Log.d("Attributes", "name: " + recipeName);
+                        }
+                    }
+                });
             }
         });
     }
