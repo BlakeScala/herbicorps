@@ -29,6 +29,7 @@ public class RecipeSearch extends AppCompatActivity {
 
     public ArrayList<String> recipes = new ArrayList<String>();
     public ArrayList<String> savedRecipes = new ArrayList<String>();
+    public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class RecipeSearch extends AppCompatActivity {
                 try {
                     String jsonData = response.body().string();
                     Log.v("log", jsonData);
+                    mRecipes = yummlyService.processResults(response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
