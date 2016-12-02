@@ -90,6 +90,33 @@
                     android:gravity="center"
                     android:layout_gravity="center_horizontal" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:layout_width="70sp"
+                        android:layout_height="70sp"
+                        android:text="✓"
+                        android:id="@+id/checkButton"
+                        android:textColor="@color/colorWhite"
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="40sp" />
+
+                    <Button
+                        android:layout_width="70sp"
+                        android:layout_height="70sp"
+                        android:text="x"
+                        android:id="@+id/xButton"
+                        android:textColor="@color/colorWhite"
+                        android:background="@color/colorPrimaryDark"
+                        android:textSize="40sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
