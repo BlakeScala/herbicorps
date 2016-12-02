@@ -81,13 +81,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View on Yelp"
+                    android:text="Ingredients"
                     android:id="@+id/websiteTextView"
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
         </RelativeLayout>

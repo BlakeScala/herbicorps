@@ -1,7 +1,10 @@
 package com.example.guest.herbicorpsapp.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
+@Parcel
 public class Recipe {
     private String recipeName;
     private String sourceName;
@@ -10,6 +13,10 @@ public class Recipe {
     private int estimatedTime;
     private int rating;
     private String id;
+
+    public Recipe() {
+
+    }
 
     public Recipe(String recipeName, String sourceName, String imageURL, ArrayList<String> ingredients, int estimatedTime, int rating, String id) {
         this.recipeName = recipeName;
