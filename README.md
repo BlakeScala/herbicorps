@@ -15,10 +15,10 @@ Application that lets users enter food ingredients they have and returns vegan r
 * Navigate to project folder ('cd herbicorps')
 * Open Android Studio, open the project, and run the emulator to view application
 
-### Future Features
-* API functionality not yet integrated
-* Array list of foods is the same every time, and is currently an array of strings. In the future, it will be an array list of Recipe objects containing image, title, body and other attributes.
-
+### Future Features/Known Bugs
+* Favorites are not yet implemented
+* Implicit intent will be an email in the future
+* API only returns about ten results each time despite count
 
 ### Technologies Used
 * Android Studio
