@@ -56,8 +56,8 @@ public class RecipeDetailFragment extends Fragment {
         Picasso.with(view.getContext()).load(mRecipe.getImageURL()).into(mImageLabel);
 
         mNameLabel.setText(mRecipe.getRecipeName());
-        mRatingLabel.setText(String.valueOf(mRecipe.getRating()));
-        mTimeLabel.setText(String.valueOf(mRecipe.getEstimatedTime()));
+        mRatingLabel.setText("Rating: " + String.valueOf(mRecipe.getRating()) + "/5");
+        mTimeLabel.setText("Preparation: " + String.valueOf(mRecipe.getEstimatedTime()/60) + " minutes");
         mIngredientLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
 
         return view;
