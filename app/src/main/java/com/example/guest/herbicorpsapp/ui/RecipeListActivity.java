@@ -5,13 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.adapters.RecipeListAdapter;
@@ -27,10 +21,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class RecipeSearch extends AppCompatActivity {
+public class RecipeListActivity extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
     @Bind(R.id.recipeRecyclerView) RecyclerView mRecipeRecyclerView;
-    private static final String TAG = RecipeSearch.class.getSimpleName();
+    private static final String TAG = RecipeListActivity.class.getSimpleName();
     public ArrayList<Recipe> mRecipes;
     private RecipeListAdapter mAdapter;
 
@@ -62,7 +56,7 @@ public class RecipeSearch extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mRecipes = yummlyService.processResults(response);
 
-                RecipeSearch.this.runOnUiThread(new Runnable() {
+                RecipeListActivity.this.runOnUiThread(new Runnable() {
 
 //                    @Override
 //                    public void run() {
@@ -71,7 +65,7 @@ public class RecipeSearch extends AppCompatActivity {
 //                            recipeNames[i] = mRecipes.get(i).getRecipeName();
 //                        }
 //
-//                        ArrayAdapter adapter = new ArrayAdapter(RecipeSearch.this, android.R.layout.simple_list_item_1, recipeNames);
+//                        ArrayAdapter adapter = new ArrayAdapter(RecipeListActivity.this, android.R.layout.simple_list_item_1, recipeNames);
 //                        mRecipeListView.setAdapter(adapter);
 //
 //                        for (String recipeName : recipeNames) {
@@ -82,7 +76,7 @@ public class RecipeSearch extends AppCompatActivity {
                     public void run() {
                         mAdapter = new RecipeListAdapter(getApplicationContext(), mRecipes);
                         mRecipeRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RecipeSearch.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RecipeListActivity.this);
                         mRecipeRecyclerView.setLayoutManager(layoutManager);
                         mRecipeRecyclerView.setHasFixedSize(true);
                     }

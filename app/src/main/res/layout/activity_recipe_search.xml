@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.example.guest.herbicorpsapp.ui.RecipeSearch">
+    tools:context=".ui.RecipeListActivity">
 
     <TextView
         android:layout_width="wrap_content"

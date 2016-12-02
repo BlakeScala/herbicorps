@@ -43,7 +43,7 @@ public class RecipeMain extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         if(v == mXButton) {
             Toast.makeText(RecipeMain.this, "Delete + Navigate back using intent with request code", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(RecipeMain.this, RecipeSearch.class);
+//            Intent intent = new Intent(RecipeMain.this, RecipeListActivity.class);
 //            startActivityForResult(intent, 1);
         } else if(v == mCheckButton) {
             checkedRecipes.add(recipeToAdd);
