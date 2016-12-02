@@ -3,6 +3,7 @@ package com.example.guest.herbicorpsapp.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,6 +28,7 @@ import okhttp3.Response;
 public class RecipeSearch extends AppCompatActivity {
     @Bind(R.id.searchText) TextView mSearchText;
     @Bind(R.id.recipeListView) ListView mRecipeListView;
+    @Bind(R.id.recipeRecyclerView) RecyclerView mRecipeRecyclerView;
 
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
