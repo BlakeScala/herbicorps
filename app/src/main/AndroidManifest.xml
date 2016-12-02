@@ -10,15 +10,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeSearch" />
-        <activity android:name=".RecipeMain"></activity>
+        <activity android:name=".ui.RecipeSearch" />
+        <activity android:name=".ui.RecipeMain"></activity>
     </application>
 
 </manifest>
