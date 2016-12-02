@@ -32,6 +32,8 @@ public class RecipeDetailFragment extends Fragment {
     @Bind(R.id.xButton) Button mXButton;
 
     private Recipe mRecipe;
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
 
     public static RecipeDetailFragment newInstance(Recipe recipe) {
         RecipeDetailFragment recipeDetailFragment = new RecipeDetailFragment();
@@ -53,7 +55,11 @@ public class RecipeDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mRecipe.getImageURL()).into(mImageLabel);
+        Picasso.with(view.getContext())
+                .load(mRecipe.getImageURL())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
+                .into(mImageLabel);
 
         mNameLabel.setText(mRecipe.getRecipeName());
         mRatingLabel.setText("Rating: " + String.valueOf(mRecipe.getRating()) + "/5");

@@ -26,6 +26,8 @@ import butterknife.ButterKnife;
  * Created by Guest on 12/2/16.
  */
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
     private ArrayList<Recipe> mRecipes = new ArrayList<Recipe>();
     private Context mContext;
 
@@ -67,10 +69,15 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         }
 
         public void bindRecipe(Recipe recipe) {
+            Picasso.with(mContext)
+                    .load(recipe.getImageURL())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(mRecipeImageView);
+
             mRecipeNameTextView.setText(recipe.getRecipeName());
             mRatingTextView.setText("Rating: " + String.valueOf(recipe.getRating()) + "/5");
             mEstimatedTimeTextView.setText("Time: " + String.valueOf(recipe.getEstimatedTime()/60) + " minutes");
-            Picasso.with(mContext).load(recipe.getImageURL()).into(mRecipeImageView);
         }
 
         public void onClick(View v) {

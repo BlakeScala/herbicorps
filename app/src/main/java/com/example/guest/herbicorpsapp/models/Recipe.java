@@ -1,5 +1,7 @@
 package com.example.guest.herbicorpsapp.models;
 
+import android.util.Log;
+
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
@@ -37,7 +39,10 @@ public class Recipe {
     }
 
     public String getImageURL() {
-        return imageURL;
+        String largeImageURL = imageURL.substring(0, imageURL.length()-4).concat("600-c");
+        Log.v("log", imageURL);
+        Log.v("log", largeImageURL);
+        return largeImageURL;
     }
 
     public ArrayList<String> getIngredients() {
