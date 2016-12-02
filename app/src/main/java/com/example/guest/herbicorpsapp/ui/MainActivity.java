@@ -47,9 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if (v == mContactEditText) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:blakescala@gmail.com"));
-                startActivity(intent);
-            }
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: 437-242-6777"));
+            startActivity(intent);
         }
     }
 }
