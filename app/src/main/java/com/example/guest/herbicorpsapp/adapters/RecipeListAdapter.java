@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.models.Recipe;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -64,6 +65,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
             mRecipeNameTextView.setText(recipe.getRecipeName());
             mRatingTextView.setText("Rating: " + String.valueOf(recipe.getRating()) + "/5");
             mEstimatedTimeTextView.setText("Time: " + String.valueOf(recipe.getEstimatedTime()/60) + " minutes");
+            Picasso.with(mContext).load(recipe.getImageURL()).into(mRecipeImageView);
         }
     }
 }

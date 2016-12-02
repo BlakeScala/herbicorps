@@ -8,6 +8,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:id="@+id/recipeImageView"
+        android:layout_marginBottom="10dp"
         android:scaleType="centerCrop"/>
 
     <LinearLayout
@@ -15,7 +16,8 @@
         android:layout_width="match_parent"
         android:background="@color/colorBackground"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
