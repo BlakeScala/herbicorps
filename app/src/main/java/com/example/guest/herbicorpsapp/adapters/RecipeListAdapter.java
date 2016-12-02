@@ -2,6 +2,7 @@ package com.example.guest.herbicorpsapp.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,8 +62,8 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
         public void bindRecipe(Recipe recipe) {
             mRecipeNameTextView.setText(recipe.getRecipeName());
-            mRatingTextView.setText(recipe.getRating());
-            mEstimatedTimeTextView.setText(recipe.getEstimatedTime());
+            mRatingTextView.setText("Rating: " + String.valueOf(recipe.getRating()) + "/5");
+            mEstimatedTimeTextView.setText("Time: " + String.valueOf(recipe.getEstimatedTime()/60) + " minutes");
         }
     }
 }
