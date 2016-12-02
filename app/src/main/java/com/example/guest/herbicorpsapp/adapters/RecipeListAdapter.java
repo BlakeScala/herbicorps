@@ -1,6 +1,7 @@
 package com.example.guest.herbicorpsapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 
 import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.models.Recipe;
+import com.example.guest.herbicorpsapp.ui.RecipeDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -47,7 +51,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         return mRecipes.size();
     }
 
-    public class RecipeViewHolder extends RecyclerView.ViewHolder {
+    public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.recipeNameTextView) TextView mRecipeNameTextView;
         @Bind(R.id.ratingTextView) TextView mRatingTextView;
         @Bind(R.id.recipeImageView) ImageView mRecipeImageView;
@@ -59,6 +63,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
 
         public void bindRecipe(Recipe recipe) {
@@ -66,6 +71,14 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
             mRatingTextView.setText("Rating: " + String.valueOf(recipe.getRating()) + "/5");
             mEstimatedTimeTextView.setText("Time: " + String.valueOf(recipe.getEstimatedTime()/60) + " minutes");
             Picasso.with(mContext).load(recipe.getImageURL()).into(mRecipeImageView);
+        }
+
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, RecipeDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("recipes", Parcels.wrap(mRecipes));
+            mContext.startActivity(intent);
         }
     }
 }
