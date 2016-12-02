@@ -60,4 +60,15 @@
         android:layout_below="@+id/ingredientInput"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:text="Contact Herbicorps!"
+        android:id="@+id/contactTextView"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
