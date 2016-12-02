@@ -1,6 +1,9 @@
-package com.example.guest.herbicorpsapp;
+package com.example.guest.herbicorpsapp.services;
 
 import android.util.Log;
+
+import com.example.guest.herbicorpsapp.Constants;
+import com.example.guest.herbicorpsapp.models.Recipe;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.example.guest.herbicorpsapp;
+package com.example.guest.herbicorpsapp.models;
 
 import java.util.ArrayList;
 
