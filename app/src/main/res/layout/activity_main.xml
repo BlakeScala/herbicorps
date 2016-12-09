@@ -28,19 +28,19 @@
         android:id="@+id/ingredientInput"
         android:hint="Enter ingredients or keywords"
         android:textAlignment="center"
-        android:layout_below="@+id/subTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp" />
+        android:layout_below="@+id/favoritesButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:id="@+id/imageView"
         android:src="@drawable/wrap"
-        android:layout_marginTop="29dp"
         android:layout_below="@+id/findButton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,6 +69,15 @@
         android:id="@+id/contactTextView"
         android:layout_marginTop="25dp"
         android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorites"
+        android:gravity="center"
+        android:id="@+id/favoritesButton"
+        android:layout_below="@+id/subTitle"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

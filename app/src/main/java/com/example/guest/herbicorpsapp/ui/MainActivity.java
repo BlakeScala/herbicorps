@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.findButton) Button mFindButton;
     @Bind(R.id.ingredientInput) EditText mIngredientInput;
     @Bind(R.id.contactTextView) TextView mContactEditText;
+    @Bind(R.id.favoritesButton) Button mFavoritesButton;
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSubTitle.setTypeface(pacificoFont);
 
         mFindButton.setOnClickListener(this);
+        mFavoritesButton.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == mContactEditText) {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: 437-242-6777"));
+            startActivity(intent);
+        }
+        if (v == mFavoritesButton) {
+            Intent intent  = new Intent(MainActivity.this, FavoriteRecipeListActivity.class);
             startActivity(intent);
         }
     }
