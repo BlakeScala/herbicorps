@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 @Parcel
 public class Recipe {
-    private String recipeName;
-    private String sourceName;
-    private String imageURL;
-    private ArrayList<String> ingredients;
-    private int estimatedTime;
-    private int rating;
-    private String id;
+    public String recipeName;
+    public String sourceName;
+    public String imageURL;
+    public ArrayList<String> ingredients;
+    public int estimatedTime;
+    public int rating;
+    public String id;
 
     public Recipe() {
 

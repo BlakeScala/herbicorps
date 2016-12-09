@@ -51,12 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (!(ingredients).equals("")) {
                 addToSharedPreferences(ingredients);
             }
-            if (ingredients.equals("")) {
-            } else {
-                Intent intent = new Intent(MainActivity.this, RecipeListActivity.class);
-                intent.putExtra("ingredients", ingredients);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(MainActivity.this, RecipeListActivity.class);
+            intent.putExtra("ingredients", ingredients);
+            startActivity(intent);
         }
         if (v == mContactEditText) {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: 437-242-6777"));

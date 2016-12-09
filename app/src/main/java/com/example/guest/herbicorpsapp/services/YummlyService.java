@@ -27,8 +27,6 @@ import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 public class YummlyService {
 
     public static void findRecipes(String foodEntry, Callback callback) {
-        Log.v("log", "MADE IT!");
-
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
@@ -39,8 +37,6 @@ public class YummlyService {
 
         String url = urlBuilder.build().toString();
         String newUrl = url + "&allowedDiet[]=386^Vegan";
-
-        Log.v("log", "URL " + newUrl);
 
         Request request = new Request.Builder()
                 .url(newUrl)

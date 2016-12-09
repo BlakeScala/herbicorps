@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "70057875017",
+    "firebase_url": "https://herbicorps-bb6be.firebaseio.com",
+    "project_id": "herbicorps-bb6be",
+    "storage_bucket": "herbicorps-bb6be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70057875017:android:965ca8cf76b62889",
+        "android_client_info": {
+          "package_name": "com.example.guest.herbicorpsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70057875017-hcg6ar788gduqpcnr9j549uls6lekh7g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guest.herbicorpsapp",
+            "certificate_hash": "59A6CBB6D97EB6B8A1CA9475A0199491DC519145"
+          }
+        },
+        {
+          "client_id": "70057875017-pq5fmf8hqej5kf1b3sj1pau6arjvkloj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKBWjRezkE-DbUvad3xch2GNopcBCvSqs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70057875017-pq5fmf8hqej5kf1b3sj1pau6arjvkloj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
