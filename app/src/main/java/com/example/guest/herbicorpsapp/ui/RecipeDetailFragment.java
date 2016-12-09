@@ -12,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.guest.herbicorpsapp.Constants;
 import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.models.Recipe;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -68,6 +71,9 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
         mTimeLabel.setText("Preparation: " + String.valueOf(mRecipe.getEstimatedTime()/60) + " minutes");
         mIngredientLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
 
+        mCheckButton.setOnClickListener(this);
+        mXButton.setOnClickListener(this);
+
         return view;
 
     }
@@ -75,9 +81,14 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == mCheckButton) {
-            Toast.makeText(getActivity().getApplicationContext(), "Added to favorites", Toast.LENGTH_LONG).show();
+            DatabaseReference recipeRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RECIPES);
+            recipeRef.push().setValue(mRecipe);
+            Toast.makeText(getContext(), "Added to favorites", Toast.LENGTH_LONG).show();
         } else if (v == mXButton) {
-            Toast.makeText(getActivity().getApplicationContext(), "Not interested", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Not interested", Toast.LENGTH_LONG).show();
+
         }
     }
 

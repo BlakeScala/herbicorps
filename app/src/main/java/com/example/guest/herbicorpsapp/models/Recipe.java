@@ -5,16 +5,17 @@ import android.util.Log;
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Parcel
 public class Recipe {
-    public String recipeName;
-    public String sourceName;
-    public String imageURL;
-    public ArrayList<String> ingredients;
-    public int estimatedTime;
-    public int rating;
-    public String id;
+    String recipeName;
+    String sourceName;
+    String imageURL;
+    List<String> ingredients = new ArrayList<>();
+    int estimatedTime;
+    int rating;
+    String id;
 
     public Recipe() {
 
@@ -45,7 +46,7 @@ public class Recipe {
         return largeImageURL;
     }
 
-    public ArrayList<String> getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
     }
 
