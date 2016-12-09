@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mFindButton) {
             String ingredients = mIngredientInput.getText().toString();
-            addToSharedPreferences(ingredients);
+            if (!(ingredients).equals("")) {
+                addToSharedPreferences(ingredients);
+            }
             if (ingredients.equals("")) {
             } else {
                 Intent intent = new Intent(MainActivity.this, RecipeListActivity.class);
