@@ -50,7 +50,7 @@ public class RecipeListActivity extends AppCompatActivity {
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentFood = mSharedPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
-        Log.d("prefs", mRecentFood);
+        Log.v("prefs", mRecentFood);
     }
 
     private void getRecipes(String foodInput) {
