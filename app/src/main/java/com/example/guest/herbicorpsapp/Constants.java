@@ -10,7 +10,7 @@ public class Constants {
     public static final String APP_ID_QUERY_PARAMETER = "_app_id";
     public static final String APP_BASE_URL = "http://api.yummly.com/v1/api/recipes?";
     public static final String APP_FOOD_QUERY_PARAMETER = "q";
-
+    public static final String PREFERENCES_FOOD_KEY = "food";
 
 }
 

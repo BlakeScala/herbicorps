@@ -1,12 +1,16 @@
 package com.example.guest.herbicorpsapp.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.example.guest.herbicorpsapp.Constants;
 import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.adapters.RecipeListAdapter;
 import com.example.guest.herbicorpsapp.models.Recipe;
@@ -28,6 +32,9 @@ public class RecipeListActivity extends AppCompatActivity {
     public ArrayList<Recipe> mRecipes;
     private RecipeListAdapter mAdapter;
 
+    private SharedPreferences mSharedPreferences;
+    private String mRecentFood;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +48,9 @@ public class RecipeListActivity extends AppCompatActivity {
         getRecipes(foodSearchInput);
         mSearchText.setText("Vegan meals including " + foodSearchInput);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentFood = mSharedPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
+        Log.d("prefs", mRecentFood);
     }
 
     private void getRecipes(String foodInput) {
