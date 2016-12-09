@@ -20,13 +20,13 @@ public class FavoriteRecipeListActivity extends AppCompatActivity {
     private DatabaseReference mRecipeReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
-    @Bind(R.id.recipeRecyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.favoritesRecyclerView) RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_recipe_search);
+        setContentView(R.layout.activity_favorites);
         ButterKnife.bind(this);
 
         mRecipeReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RECIPES);
