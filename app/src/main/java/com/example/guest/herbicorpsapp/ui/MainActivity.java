@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.contactTextView) TextView mContactEditText;
     @Bind(R.id.favoritesButton) Button mFavoritesButton;
 
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
         Typeface pacificoFont = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
         mMainTitle.setTypeface(pacificoFont);
@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mFindButton) {
             String ingredients = mIngredientInput.getText().toString();
-            if (!(ingredients).equals("")) {
-                addToSharedPreferences(ingredients);
-            }
+//            if (!(ingredients).equals("")) {
+//                addToSharedPreferences(ingredients);
+//            }
             Intent intent = new Intent(MainActivity.this, RecipeListActivity.class);
             intent.putExtra("ingredients", ingredients);
             startActivity(intent);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
-    private void addToSharedPreferences(String food) {
-        mEditor.putString(Constants.PREFERENCES_FOOD_KEY, food).apply();
-    }
+//    private void addToSharedPreferences(String food) {
+//        mEditor.putString(Constants.PREFERENCES_FOOD_KEY, food).apply();
+//    }
 }
