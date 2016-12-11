@@ -33,6 +33,7 @@ public class RecipeListActivity extends AppCompatActivity {
     private RecipeListAdapter mAdapter;
 
     private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
     private String mRecentFood;
 
     @Override
