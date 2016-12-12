@@ -11,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.guest.herbicorpsapp.R;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.mainTitle) TextView mMainTitle;
     @Bind(R.id.subTitle) TextView mSubTitle;
     @Bind(R.id.findButton) Button mFindButton;
-    @Bind(R.id.ingredientInput) EditText mIngredientInput;
     @Bind(R.id.contactTextView) TextView mContactEditText;
     @Bind(R.id.favoritesButton) Button mFavoritesButton;
 
@@ -68,12 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mFindButton) {
-            String ingredients = mIngredientInput.getText().toString();
 //            if (!(ingredients).equals("")) {
 //                addToSharedPreferences(ingredients);
 //            }
             Intent intent = new Intent(MainActivity.this, RecipeListActivity.class);
-            intent.putExtra("ingredients", ingredients);
             startActivity(intent);
         }
         if (v == mContactEditText) {

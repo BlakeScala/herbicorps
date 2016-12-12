@@ -45,9 +45,6 @@ public class RecipeListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String foodSearchInput = intent.getStringExtra("ingredients");
-
-        getRecipes(foodSearchInput);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentFood = mSharedPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
