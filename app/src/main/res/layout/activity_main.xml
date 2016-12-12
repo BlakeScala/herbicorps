@@ -46,8 +46,13 @@
         android:layout_height="wrap_content"
         android:text="Find Recipes"
         android:id="@+id/findButton"
-        android:layout_below="@+id/subTitle"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:layout_above="@+id/imageView"
+        android:layout_alignLeft="@+id/mainTitle"
+        android:layout_alignStart="@+id/mainTitle" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,7 +71,13 @@
         android:text="Favorites"
         android:gravity="center"
         android:id="@+id/favoritesButton"
-        android:layout_below="@+id/findButton"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/subTitle"
+        android:layout_toRightOf="@+id/contactTextView"
+        android:layout_toEndOf="@+id/contactTextView" />
 
 </RelativeLayout>
