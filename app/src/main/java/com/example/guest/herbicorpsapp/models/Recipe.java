@@ -15,7 +15,7 @@ public class Recipe {
     List<String> ingredients = new ArrayList<>();
     int estimatedTime;
     int rating;
-    String id;
+    private String pushId;
 
     public Recipe() {
 
@@ -28,7 +28,6 @@ public class Recipe {
         this.ingredients = ingredients;
         this.estimatedTime = estimatedTime;
         this.rating = rating;
-        this.id = id;
     }
 
     public String getRecipeName() {
@@ -58,9 +57,11 @@ public class Recipe {
         return rating;
     }
 
-    public String getId() {
-        return id;
+    public String getPushId() {
+        return pushId;
     }
 
-
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }

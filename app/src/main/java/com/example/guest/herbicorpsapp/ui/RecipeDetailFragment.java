@@ -1,7 +1,6 @@
 package com.example.guest.herbicorpsapp.ui;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +14,8 @@ import android.widget.Toast;
 import com.example.guest.herbicorpsapp.Constants;
 import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.models.Recipe;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -81,10 +82,18 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == mCheckButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference recipeRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_RECIPES);
-            recipeRef.push().setValue(mRecipe);
+                    .getReference(Constants.FIREBASE_CHILD_RECIPES)
+                    .child(uid);
+
+            DatabaseReference pushRef = recipeRef.push();
+            String pushId = pushRef.getKey();
+            mRecipe.setPushId(pushId);
+            pushRef.setValue(mRecipe);
+
             Toast.makeText(getContext(), "Added to favorites", Toast.LENGTH_LONG).show();
         } else if (v == mXButton) {
             Toast.makeText(getContext(), "Not interested", Toast.LENGTH_LONG).show();
