@@ -18,6 +18,7 @@ Application that lets users enter food ingredients they have and returns vegan r
 ### Future Features/Known Bugs
 
 * Deleting restaurants from favorites not yet implemented
+* Removed click listeners from favorites page because the intent was crashing app. Will fix soon
 * Implicit intent will be an email in the future
 * API only returns about ten results each time despite count
 
