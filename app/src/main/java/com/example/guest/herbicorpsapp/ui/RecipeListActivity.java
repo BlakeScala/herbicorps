@@ -31,7 +31,6 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RecipeListActivity extends AppCompatActivity {
-    @Bind(R.id.searchText) TextView mSearchText;
     @Bind(R.id.recipeRecyclerView) RecyclerView mRecipeRecyclerView;
     private static final String TAG = RecipeListActivity.class.getSimpleName();
     public ArrayList<Recipe> mRecipes;
@@ -51,11 +50,10 @@ public class RecipeListActivity extends AppCompatActivity {
         String foodSearchInput = intent.getStringExtra("ingredients");
 
         getRecipes(foodSearchInput);
-        mSearchText.setText("Vegan meals including " + foodSearchInput);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentFood = mSharedPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
-        Log.v("prefs", mRecentFood);
+//        Log.v("prefs", mRecentFood);
 
         if (mRecentFood != null) {
             getRecipes(mRecentFood);
