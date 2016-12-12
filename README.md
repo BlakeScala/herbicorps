@@ -16,7 +16,8 @@ Application that lets users enter food ingredients they have and returns vegan r
 * Open Android Studio, open the project, and run the emulator to view application
 
 ### Future Features/Known Bugs
-* Favorites are not yet implemented
+
+* Deleting restaurants from favorites not yet implemented
 * Implicit intent will be an email in the future
 * API only returns about ten results each time despite count
 
