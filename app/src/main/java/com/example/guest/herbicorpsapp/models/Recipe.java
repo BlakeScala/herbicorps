@@ -16,6 +16,7 @@ public class Recipe {
     int estimatedTime;
     int rating;
     private String pushId;
+    String index;
 
     public Recipe() {
 
@@ -28,6 +29,7 @@ public class Recipe {
         this.ingredients = ingredients;
         this.estimatedTime = estimatedTime;
         this.rating = rating;
+        this.index = "not_specified";
     }
 
     public String getRecipeName() {
@@ -63,5 +65,13 @@ public class Recipe {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }

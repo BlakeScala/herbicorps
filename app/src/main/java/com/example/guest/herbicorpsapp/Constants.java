@@ -12,6 +12,6 @@ public class Constants {
     public static final String APP_FOOD_QUERY_PARAMETER = "q";
     public static final String PREFERENCES_FOOD_KEY = "food";
     public static final String FIREBASE_CHILD_RECIPES = "recipes";
-
+    public static final String FIREBASE_QUERY_INDEX = "index";
 }
 

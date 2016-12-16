@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by Guest on 12/9/16.
  */
-public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder{
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
 
@@ -33,7 +33,6 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindRecipe(Recipe recipe) {
@@ -51,32 +50,5 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
         nameTextView.setText(recipe.getRecipeName());
         ratingTextView.setText("Rating: " + recipe.getRating() + "/5");
         timeTextView.setText("Time: " + String.valueOf(recipe.getEstimatedTime()/60) + " minutes");
-    }
-
-    @Override
-    public void onClick(View v) {
-        final ArrayList<Recipe> recipes = new ArrayList<>();
-        DatabaseReference ref =  FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RECIPES);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    recipes.add(snapshot.getValue(Recipe.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-//                Intent intent = new Intent(mContext, RecipeDetailActivity.class);
-//                intent.putExtra("position", itemPosition + "");
-//                intent.putExtra("recipes", Parcels.wrap(recipes));
-
-//                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 }
