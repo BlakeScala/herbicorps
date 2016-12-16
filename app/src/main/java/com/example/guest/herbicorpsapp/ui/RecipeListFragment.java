@@ -1,6 +1,7 @@
 package com.example.guest.herbicorpsapp.ui;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -21,6 +22,7 @@ import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.adapters.RecipeListAdapter;
 import com.example.guest.herbicorpsapp.models.Recipe;
 import com.example.guest.herbicorpsapp.services.YummlyService;
+import com.example.guest.herbicorpsapp.util.OnRecipeSelectedListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,6 +44,8 @@ public class RecipeListFragment extends Fragment {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentFood;
+
+    private OnRecipeSelectedListener mOnRecipeSelectedListener;
 
 
     public RecipeListFragment() {
@@ -134,6 +138,16 @@ public class RecipeListFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mOnRecipeSelectedListener = (OnRecipeSelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + e.getMessage());
+        }
     }
 
 }

@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:id="@+id/fragmentItemsList"
-        android:name="com.example.guest.herbicorpsapp.ui.RecipeListFragment"
+        android:name="com.example.guest.herbicorpsapp.ui.FavoriteRecipeListFragment"
         android:layout_weight="3"
         tools:layout="@layout/fragment_favorite_recipe_list"/>
 

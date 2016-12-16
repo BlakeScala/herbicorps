@@ -18,6 +18,7 @@ import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.models.Recipe;
 import com.example.guest.herbicorpsapp.ui.RecipeDetailActivity;
 import com.example.guest.herbicorpsapp.ui.RecipeDetailFragment;
+import com.example.guest.herbicorpsapp.util.OnRecipeSelectedListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -33,18 +34,21 @@ import butterknife.ButterKnife;
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
+
     private ArrayList<Recipe> mRecipes = new ArrayList<Recipe>();
     private Context mContext;
+    private OnRecipeSelectedListener mOnRecipeSelectedListener;
 
-    public RecipeListAdapter(Context context, ArrayList<Recipe> recipes) {
+    public RecipeListAdapter(Context context, ArrayList<Recipe> recipes, OnRecipeSelectedListener recipeSelectedListener) {
         mContext = context;
         mRecipes = recipes;
+        mOnRecipeSelectedListener = recipeSelectedListener;
     }
 
     @Override
     public RecipeListAdapter.RecipeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_list_item, parent, false);
-        RecipeViewHolder viewHolder = new RecipeViewHolder(view);
+        RecipeViewHolder viewHolder = new RecipeViewHolder(view, mRecipes, mOnRecipeSelectedListener);
         return viewHolder;
     }
 
