@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/recipeNameTextView"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             android:text="Recipe Name"
             android:textColor="@color/colorBlack"/>
@@ -50,6 +50,7 @@
             android:id="@+id/ratingTextView"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:visibility="gone"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
 
@@ -59,6 +60,7 @@
             android:text="Estimated Time"
             android:id="@+id/estimatedTimeTextView"
             android:textColor="@color/colorPrimaryDark"
+            android:textSize="10dp"
             android:layout_below="@+id/recipeNameTextView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
