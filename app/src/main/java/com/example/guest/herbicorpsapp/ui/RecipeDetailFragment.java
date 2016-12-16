@@ -35,7 +35,6 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     @Bind(R.id.estimatedTimeTextView) TextView mTimeLabel;
     @Bind(R.id.ingredientTextView) TextView mIngredientLabel;
     @Bind(R.id.checkButton) Button mCheckButton;
-    @Bind(R.id.xButton) Button mXButton;
 
     private Recipe mRecipe;
     private static final int MAX_WIDTH = 400;
@@ -73,7 +72,6 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
         mIngredientLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
 
         mCheckButton.setOnClickListener(this);
-        mXButton.setOnClickListener(this);
 
         return view;
 
@@ -95,9 +93,6 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
             pushRef.setValue(mRecipe);
 
             Toast.makeText(getContext(), "Added to favorites", Toast.LENGTH_LONG).show();
-        } else if (v == mXButton) {
-            Toast.makeText(getContext(), "Not interested", Toast.LENGTH_LONG).show();
-
         }
     }
 
