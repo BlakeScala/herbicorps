@@ -27,6 +27,7 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
 
     View mView;
     Context mContext;
+    public ImageView mRecipeImageView;
 
     public FirebaseRecipeViewHolder(View itemView) {
         super(itemView);
@@ -36,16 +37,16 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
     }
 
     public void bindRecipe(Recipe recipe) {
-        ImageView recipeImageView = (ImageView) mView.findViewById(R.id.recipeImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.recipeNameTextView);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
         TextView timeTextView = (TextView) mView.findViewById(R.id.estimatedTimeTextView);
+        mRecipeImageView = (ImageView) mView.findViewById(R.id.recipeImageView);
 
         Picasso.with(mContext)
                 .load(recipe.getImageURL())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
-                .into(recipeImageView);
+                .into(mRecipeImageView);
 
         nameTextView.setText(recipe.getRecipeName());
         ratingTextView.setText("Rating: " + recipe.getRating() + "/5");
