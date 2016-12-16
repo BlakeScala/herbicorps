@@ -1,0 +1,132 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.guest.herbicorpsapp.ui.RecipeDetailFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/recipeImageView"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recipe Name"
+                        android:id="@+id/recipeNameTextView"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.5/5"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/ratingTextView"
+                        android:layout_alignTop="@+id/recipeNameTextView"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/colorMainTitle"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimated Time"
+                        android:id="@+id/estimatedTimeTextView"
+                        android:layout_below="@+id/recipeNameTextView"
+                        android:textColor="@color/colorMainTitle"
+                        android:textStyle="italic"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="20dp"
+                        android:background="@color/colorMainTitle"
+                        android:paddingRight="30dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ingredients"
+                            android:id="@+id/ingredientTitle"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ingredients"
+                            android:id="@+id/ingredientTextView"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="50sp"
+                                android:text="Add to Favorites"
+                                android:id="@+id/checkButton"
+                                android:textColor="@color/colorWhite"
+                                android:background="@color/colorBackground"
+                                android:textSize="20sp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
