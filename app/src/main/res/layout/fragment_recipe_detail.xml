@@ -105,33 +105,17 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:layout_width="70sp"
-                        android:layout_height="70sp"
-                        android:text="✓"
+                        android:layout_width="match_parent"
+                        android:layout_height="50sp"
+                        android:text="Add to Favorites"
                         android:id="@+id/checkButton"
                         android:textColor="@color/colorWhite"
                         android:background="@color/colorPrimaryDark"
-                        android:textSize="40sp"
-                        android:layout_alignTop="@+id/xButton"
+                        android:textSize="20sp"
+                        android:layout_alignParentBottom="true"
                         android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_alignParentStart="true" />
 
-                    <Button
-                        android:layout_width="70sp"
-                        android:layout_height="70sp"
-                        android:text="x"
-                        android:id="@+id/xButton"
-                        android:textColor="@color/colorWhite"
-                        android:background="@color/colorPrimaryDark"
-                        android:textSize="40sp"
-                        android:layout_marginTop="29dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true" />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
