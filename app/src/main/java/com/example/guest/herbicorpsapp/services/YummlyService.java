@@ -38,6 +38,8 @@ public class YummlyService {
         String url = urlBuilder.build().toString();
         String newUrl = url + "&allowedDiet[]=386^Vegan";
 
+        Log.v("TAG", newUrl);
+
         Request request = new Request.Builder()
                 .url(newUrl)
                 .build();

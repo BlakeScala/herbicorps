@@ -37,6 +37,7 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     @Bind(R.id.estimatedTimeTextView) TextView mTimeLabel;
     @Bind(R.id.ingredientTextView) TextView mIngredientLabel;
     @Bind(R.id.checkButton) Button mCheckButton;
+    private String mSrc;
 
     private Recipe mRecipe;
     private ArrayList<Recipe> mRecipes;
@@ -45,12 +46,13 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
-    public static RecipeDetailFragment newInstance(ArrayList<Recipe> recipes, Integer position) {
+    public static RecipeDetailFragment newInstance(ArrayList<Recipe> recipes, Integer position, String src) {
         RecipeDetailFragment recipeDetailFragment = new RecipeDetailFragment();
         Bundle args = new Bundle();
 
         args.putParcelable(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(recipes));
         args.putInt(Constants.EXTRA_KEY_POSITION, position);
+        args.putString(Constants.KEY_SOURCE, src);
 
         recipeDetailFragment.setArguments(args);
         return recipeDetailFragment;
@@ -62,6 +64,8 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
         mRecipes = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_RECIPES));
         mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
         mRecipe = mRecipes.get(mPosition);
+        mSrc = getArguments().getString(Constants.KEY_SOURCE);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -69,6 +73,12 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
         ButterKnife.bind(this, view);
+
+        if (mSrc.equals(Constants.SOURCE_SAVED)) {
+            mCheckButton.setVisibility(View.GONE);
+        } else {
+            mCheckButton.setOnClickListener(this);
+        }
 
         Picasso.with(view.getContext())
                 .load(mRecipe.getImageURL())
@@ -81,7 +91,6 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
         mTimeLabel.setText("Preparation: " + String.valueOf(mRecipe.getEstimatedTime()/60) + " minutes");
         mIngredientLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
 
-        mCheckButton.setOnClickListener(this);
 
         return view;
 

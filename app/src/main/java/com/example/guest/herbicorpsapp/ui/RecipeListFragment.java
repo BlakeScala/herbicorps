@@ -94,7 +94,7 @@ public class RecipeListFragment extends Fragment {
 
                     @Override
                     public void run() {
-                        mAdapter = new RecipeListAdapter(getActivity(), mRecipes);
+                        mAdapter = new RecipeListAdapter(getActivity(), mRecipes, mOnRecipeSelectedListener);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                         mRecyclerView.setLayoutManager(layoutManager);

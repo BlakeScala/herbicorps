@@ -14,15 +14,17 @@ import java.util.ArrayList;
  */
 public class RecipePagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Recipe> mRecipes;
+    private String mSrc;
 
-    public RecipePagerAdapter(FragmentManager fm, ArrayList<Recipe> recipes) {
+    public RecipePagerAdapter(FragmentManager fm, ArrayList<Recipe> recipes, String src) {
         super(fm);
         mRecipes = recipes;
+        mSrc = src;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return RecipeDetailFragment.newInstance(mRecipes, position);
+        return RecipeDetailFragment.newInstance(mRecipes, position, mSrc);
     }
 
     @Override

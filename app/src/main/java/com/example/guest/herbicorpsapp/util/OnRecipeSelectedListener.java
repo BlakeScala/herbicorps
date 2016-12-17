@@ -8,5 +8,5 @@ import java.util.ArrayList;
  * Created by Guest on 12/16/16.
  */
 public interface OnRecipeSelectedListener {
-    public void onRecipeSelected(Integer position, ArrayList<Recipe> recipes);
+    public void onRecipeSelected(Integer position, ArrayList<Recipe> recipes, String src);
 }

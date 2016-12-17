@@ -2,12 +2,18 @@ package com.example.guest.herbicorpsapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.guest.herbicorpsapp.Constants;
+import com.example.guest.herbicorpsapp.R;
 import com.example.guest.herbicorpsapp.models.Recipe;
 import com.example.guest.herbicorpsapp.ui.RecipeDetailActivity;
+import com.example.guest.herbicorpsapp.ui.RecipeDetailFragment;
 import com.example.guest.herbicorpsapp.util.ItemTouchHelperAdapter;
 import com.example.guest.herbicorpsapp.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -31,12 +37,15 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
     private Context mContext;
     private ChildEventListener mChildEventListener;
     private ArrayList<Recipe> mRecipes = new ArrayList<>();
+    private int mOrientation;
+
 
     public FirebaseRecipeListAdapter(Class<Recipe> modelClass, int modelLayout, Class<FirebaseRecipeViewHolder> viewHolderClass, Query ref, OnStartDragListener onStartDragListener, Context context) {
         super(modelClass, modelLayout, viewHolderClass, ref);
         mRef = ref.getRef();
         mOnStartDragListener = onStartDragListener;
         mContext = context;
+
 
         mChildEventListener = mRef.addChildEventListener(new ChildEventListener() {
 
@@ -71,6 +80,12 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
     @Override
     protected void populateViewHolder(final FirebaseRecipeViewHolder viewHolder, Recipe model, int position) {
         viewHolder.bindRecipe(model);
+
+        mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
+        if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            createDetailFragment(0);
+        }
+
         viewHolder.mRecipeImageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -85,10 +100,17 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, RecipeDetailActivity.class);
-                intent.putExtra("position", viewHolder.getAdapterPosition());
-                intent.putExtra("recipes", Parcels.wrap(mRecipes));
-                mContext.startActivity(intent);
+                int itemPosition = viewHolder.getAdapterPosition();
+                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    createDetailFragment(itemPosition);
+                } else {
+                    Intent intent = new Intent(mContext, RecipeDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+                    intent.putExtra(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(mRecipes));
+                    intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_SAVED);
+                    mContext.startActivity(intent);
+                }
+
             }
         });
     }
@@ -120,5 +142,12 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
         super.cleanup();
         setIndexInFirebase();
         mRef.removeEventListener(mChildEventListener);
+    }
+
+    private void createDetailFragment(int position) {
+        RecipeDetailFragment detailFragment = RecipeDetailFragment.newInstance(mRecipes, position, Constants.SOURCE_SAVED);
+        FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.recipeDetailContainer, detailFragment);
+        ft.commit();
     }
 }

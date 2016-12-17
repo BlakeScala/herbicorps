@@ -70,18 +70,23 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
         private Context context;
         private int mOrientation;
+        private ArrayList<Recipe> mRecipes = new ArrayList<>();
+        private OnRecipeSelectedListener mRecipeSelectedListener;
 
-        public RecipeViewHolder(View itemView) {
+        public RecipeViewHolder(View itemView, ArrayList<Recipe> recipes, OnRecipeSelectedListener recipeSelectedListener) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
-            itemView.setOnClickListener(this);
 
             mOrientation = itemView.getResources().getConfiguration().orientation;
+            mRecipes = recipes;
+            mRecipeSelectedListener = recipeSelectedListener;
 
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
                 createDetailFragment(0);
             }
+            itemView.setOnClickListener(this);
+
         }
 
         public void bindRecipe(Recipe recipe) {
@@ -97,7 +102,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         }
 
         private void createDetailFragment(int position) {
-            RecipeDetailFragment detailFragment = RecipeDetailFragment.newInstance(mRecipes, position);
+            RecipeDetailFragment detailFragment = RecipeDetailFragment.newInstance(mRecipes, position, Constants.SOURCE_FIND);
             FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.recipeDetailContainer, detailFragment);
             ft.commit();
@@ -105,12 +110,14 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
+            mRecipeSelectedListener.onRecipeSelected(itemPosition, mRecipes, Constants.SOURCE_FIND);
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
                 createDetailFragment(itemPosition);
             } else {
                 Intent intent = new Intent(mContext, RecipeDetailActivity.class);
                 intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
                 intent.putExtra(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(mRecipes));
+                intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_FIND);
                 mContext.startActivity(intent);
             }
         }
